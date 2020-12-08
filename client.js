@@ -1,14 +1,16 @@
-// $(document).ready(readyNow);
+$(document).ready(readyNow);
 
-// function readyNow() {
-//   $('#viewBonus').on('click', displayBonuses)
-// }
+function readyNow() {
+  $('#viewBonus').on('click', displayBonuses)
+}
 
 function displayBonuses() {
-  // let employeeList = $('#employeeBonusList');
-  // employeeList.empty();
+  let employeeList = $('#employeeBonusList');
+  employeeList.empty();
   calculateAllBonuses(employees);
-
+  for (let emp of employeeBonusInfo) {
+    employeeList.append(`<li>${emp.name}  - Bonus Percentage ${emp.bonusPercentage} - Total Bonus: ${emp.totalBonus} - Total Compensation: ${emp.totalCompensation}</li>`)
+  }
 }
 
 const employees = [
@@ -85,17 +87,17 @@ function bonusCalculator(worker) {
   return newObject;
 }
 
+let employeeBonusInfo = [];
 
 function calculateAllBonuses(array) {
-  // let employeeList = $('#employeeBonusList');
+  let employeeList = $('#employeeBonusList');
   for (let i = 0; i < array.length; i++) {
-    console.log(bonusCalculator(array[i]));
-
-    // employeeList.append(`<li>${bonusCalculator(array[i])}</li>`)    
+    employeeBonusInfo.push(bonusCalculator(employees[i]))
   }
+  console.log(employeeBonusInfo);
 }
 
-calculateAllBonuses(employees);
+// calculateAllBonuses(employees);
 
 
 
