@@ -1,3 +1,16 @@
+// $(document).ready(readyNow);
+
+// function readyNow() {
+//   $('#viewBonus').on('click', displayBonuses)
+// }
+
+function displayBonuses() {
+  // let employeeList = $('#employeeBonusList');
+  // employeeList.empty();
+  calculateAllBonuses(employees);
+
+}
+
 const employees = [
   {
     name: 'Atticus',
@@ -68,12 +81,27 @@ function bonusCalculator(worker) {
   newObject.totalBonus = Math.round(newObject.bonusPercentage * worker.annualSalary);
   newObject.totalCompensation = newObject.totalBonus + Number(worker.annualSalary);
 
-
+  
   return newObject;
 }
 
-console.log(bonusCalculator(employees[2]));
 
+function calculateAllBonuses(array) {
+  // let employeeList = $('#employeeBonusList');
+  for (let i = 0; i < array.length; i++) {
+    console.log(bonusCalculator(array[i]));
+
+    // employeeList.append(`<li>${bonusCalculator(array[i])}</li>`)    
+  }
+}
+
+calculateAllBonuses(employees);
+
+
+
+// console.log(bonusCalculator(employees[2]));
+
+// console.table(calculateAllBonuses(employees));
 
 // Write a declared function that takes in one Employee object (as an argument to
 // the function), and returns a new object with the following properties:
@@ -117,4 +145,3 @@ console.log(bonusCalculator(employees[2]));
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
